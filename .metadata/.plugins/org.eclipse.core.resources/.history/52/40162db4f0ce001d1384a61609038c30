@@ -1,0 +1,32 @@
+package com.array;
+
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class Students {
+
+public static void main(String[] args) {
+	String s = "Shekhar nyn Mahajan Nayan";
+	
+    String array [] = new String[4];
+    int c=0;
+    for(int i=0;i<s.length();i++)
+    {
+    	String temp ="";
+    	
+    	if(s.charAt(i)!=' ')
+    	{
+    		temp= temp+s.charAt(i);
+    	}
+    	else {
+			array[0] = temp;
+			c++;
+		}
+    	
+    }
+    System.out.println(Arrays.toString(array)));
+}
+    
+}

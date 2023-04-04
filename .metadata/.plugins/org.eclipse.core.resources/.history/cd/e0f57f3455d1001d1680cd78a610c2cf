@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body center = "align">
+    <form action="Registration" method="post">
+        
+            Enter FirstName :- <input type="text" name="firstname" placeholder="Enter FirstName"/><br><br>
+            Enter LastName :- <input type="text" name="lastname" placeholder="Enter LastName"/><br><br>
+            Enter Gender :- <input type="text" name="gender" placeholder="Select Gender"/> <br><br>
+            Enter Email :- <input type="text" name="email" placeholder="Enter Email"/><br><br>
+            Enter Password :- <input type="password" name="pass" placeholder="Enter Password"/><br><br>
+            Enter ConformPassword :- <input type="password" name="cnfpass" placeholder="Enter Password"/><br><br>
+            
+            <label for="City">City:</label>
+                  <select id="city" name="city">
+                      <option value="Jalgaon">Jalgaon</option>
+                      <option value="Pune">Pune</option>
+                      <option value="Mumbai">Mumbai</option>
+                      <option value="Ahmedabad">Ahmedabad</option>
+                   </select><br><br>
+ 
+          
+           <p>Hobby:</p>
+  <input type="radio" id="hobbi1" name="hobbi" value="Cricket">Cricket
+  
+  <input type="radio" id="hobbi2" name="hobbi" value="Singing">Singing
+ 
+  <input type="radio" id="hobbi3" name="hobbi" value="Bike Ridding">Bike Ridding
+ 
+<br><br>
+            
+        <input type="submit" value="Login">
+         
+    </form>
+    <% String error = (String)request.getAttribute("error"); %>
+    <%= error %>
+</body>
+</html>

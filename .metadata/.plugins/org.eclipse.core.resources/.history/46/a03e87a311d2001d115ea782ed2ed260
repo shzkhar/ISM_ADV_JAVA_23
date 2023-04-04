@@ -1,0 +1,32 @@
+package com.dao;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Test extends HttpServlet {
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String fname = req.getParameter("fname");
+		String email = req.getParameter("email");
+		
+		String error = "";
+		RequestDispatcher rd =null;
+		if(fname.equals("Shekhar") && email.equals("shekhar@gmail.com"))
+		{
+		    rd = req.getRequestDispatcher("Welcome.html");
+		}
+		else {
+			error="Please Enter Valid Details";
+			req.setAttribute("error", error);
+			rd = req.getRequestDispatcher("Login.jsp");
+	}
+		rd.forward(req, resp);
+	}
+}

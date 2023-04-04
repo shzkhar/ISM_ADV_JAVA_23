@@ -1,0 +1,9 @@
+package com.util;
+
+public class GetConnection {
+
+	public static void getConnection()
+	{
+		
+	}
+}

@@ -1,0 +1,115 @@
+package com.dao;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.util.GetConnection;
+
+@WebServlet("/signup")
+public class Signup extends HttpServlet{
+
+	Scanner sc = new Scanner(System.in);
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String fname = req.getParameter("firstname");
+		String email = req.getParameter("email");
+		String pass = req.getParameter("password");
+		
+		boolean iserror = false;
+		if(fname==null || fname.trim().length()==0)
+		{
+			iserror = true;
+			req.setAttribute("firstname", "FirstName Can't Be Empty");
+		}
+		else if(fname.trim().length() < 2)
+		{
+			iserror = true;
+			req.setAttribute("firstname", "Please Enter Greter Than 2 Character");
+		}
+		else {
+			String alpha = "[a-zA-Z]+";
+			if(fname.matches(alpha)==false)
+			{
+				iserror = true;
+				req.setAttribute("firstname","Please Enter Valid Name");	
+			}
+			else {
+				req.setAttribute("fnamevalue", fname);	
+			}
+		}
+		
+		if(email==null || email.trim().length()==0)
+		{
+			iserror=true;
+			req.setAttribute("email", "Email Can't Be Empty");
+		}
+		else {
+			String alpha="^(.+)@(\\S+)$";
+			if(email.matches(alpha)==false)
+			{
+				iserror=true;
+				req.setAttribute("email", "Please Enter Valid Emial");
+			}
+			else {
+				req.setAttribute("emailvalue", email);
+			}
+			
+		}
+		
+		 if(pass==null || pass.trim().length()==0)
+	     {
+	    	 iserror = true;
+	    	req.setAttribute("pass", "Password Can't Be Empty");
+	     }
+	     else
+	     {
+	    	String alpha1 = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+	    	if(pass.matches(alpha1)==false)
+	    	{
+	    		iserror = true;
+	    		req.setAttribute("pass", "Enter Strong PassWord");
+	    	}
+	    	else {
+	    		req.setAttribute("passvalue", pass);
+			}
+	     }
+		
+		RequestDispatcher rd = null;
+		if(iserror)
+		{
+		   rd = req.getRequestDispatcher("RegistrationPage.jsp");
+		}
+		else {
+			
+			Connection con = GetConnection.getConnection();
+			
+			try {
+				PreparedStatement ps = con.prepareStatement("insert into signup values(?, ?, ?");
+			   
+				ps.setString(1,fname);
+				
+				ps.setString(2, email);
+				 
+				ps.setString(3,pass);
+				
+				int rowaffected = ps.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		rd.forward(req, resp);
+	}
+}

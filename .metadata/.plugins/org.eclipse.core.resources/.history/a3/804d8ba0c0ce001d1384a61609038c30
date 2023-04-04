@@ -1,0 +1,62 @@
+package com.array;
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class Student {
+	
+
+	static Scanner sc = new Scanner(System.in);
+	
+	static String name;
+	static int id;
+	static int age;
+	static String address;
+	
+	public Student(String name, int id, int age, String address) {
+		super();
+		this.name = name;
+		this.id = id;
+		this.age = age;
+		this.address = address;
+	}
+	
+//	public static Student setValue(String name, int id, int age, String address)
+//	{
+//		
+//		
+//		s = setValue(name1,id1,age1,address1);
+//		
+//		return s;
+//		
+//	}
+	public static void main(String[] args) {
+		LinkedList l = new LinkedList();
+	 
+       
+		for(int i=1;i<=3;i++)
+		 {
+			 
+			Student s = new Student(name, id, age, address);
+				
+				System.out.println("Enter Name");
+				String name1 = sc.next();
+				
+				System.out.println("Enter ID");
+				int id1 = sc.nextInt();
+				
+				System.out.println("Enter AGE");
+				int age1 = sc.nextInt();
+				
+				System.out.println("Enter Address");
+				String address1 = sc.next();
+				 
+				
+			 
+		 }
+		 
+		 System.out.println(l.get(0));
+	}
+
+	
+}

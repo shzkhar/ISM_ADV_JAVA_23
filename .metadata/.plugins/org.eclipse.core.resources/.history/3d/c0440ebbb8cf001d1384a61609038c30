@@ -1,0 +1,58 @@
+package com.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.PasswordAuthentication;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class SignupController extends HttpServlet {
+	
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String firstName = request.getParameter("firstName");
+		String email = request.getParameter("email");
+		String pass = request.getParameter("password");
+		
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		
+		boolean iserror = false;
+		StringBuffer error = new StringBuffer("");
+		
+		out.print("<html><body>");
+		     if(firstName==null && firstName.trim().length()==0)
+		     {
+		    	 iserror = true;
+		    	 error.append("First Name Cant Be Empty");
+		     }
+		     else if(firstName.trim().length() <=2)
+		     {
+		    	iserror = true;
+		    	error.append("Please Enter Greater That 2 Word");
+		     }
+		     else 
+		     {
+		    	 String alpha = "[a-zA-Z]+";
+		     }
+		     if(email==null && email.trim().length()==0)
+		     {
+		    	 iserror = true;
+		    	 error.append("Email Can't Be Empty");
+		     }
+		     if(pass==null && pass.trim().length()==0)
+		     {
+		    	 iserror = true;
+		    	 error.append("PassWoord Can't Be Empty");
+		     }
+		
+		out.print("</html></body>");
+		
+		
+	}
+	}

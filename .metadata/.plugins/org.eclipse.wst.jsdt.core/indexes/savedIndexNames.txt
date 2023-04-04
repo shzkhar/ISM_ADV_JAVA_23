@@ -1,0 +1,11 @@
+INDEX VERSION 1.4+C:\ISM-Batch\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+908502622.index
+892314623.index
+1863681858.index
+1314455057.index
+2352700142.index
+3955449029.index
+908502622.index
+1473911872.index
+2900271712.index
+2763221498.index

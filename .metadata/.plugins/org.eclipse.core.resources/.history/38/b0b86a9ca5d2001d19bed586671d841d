@@ -1,0 +1,32 @@
+package com.util;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class GetConnection {
+
+	
+	private static final String URLNAME = "jdbc:mysql://locahost:3306/ISMAdv_Java";
+	private static final String DRIVERCLASS = "com.mysql.cj.jdbc.Driver";
+	private static final String USERNAME = "root";
+	private static final String PASSWORD = "tiger";  
+	
+	public static Connection getConnection()
+	{
+		Connection con = null;
+		try {
+			Class.forName(DRIVERCLASS);
+			
+			con = DriverManager.getConnection(URLNAME,USERNAME,PASSWORD);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return con;
+	}
+}

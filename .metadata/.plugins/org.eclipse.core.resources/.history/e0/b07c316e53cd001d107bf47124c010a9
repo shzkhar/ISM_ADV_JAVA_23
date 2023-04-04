@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <form action="SighupController" method="post">
+        FirstName : <input type="text" name="FirstName" placeholder="Enter Name"/> <br><br>
+        email : <input type="email" name="Email" palceholder="EnterEmail"/> <br><br>
+        Password : <input type="password" name="Password" placeholder="EnterPassword"/> <br><br>
+        
+        <input type="submit" value="LOGIN">
+        
+  </form>
+</body>
+</html>

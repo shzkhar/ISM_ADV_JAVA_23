@@ -1,0 +1,89 @@
+package com.controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/Registration")
+public class Registration extends HttpServlet {
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse responce) throws ServletException, IOException {
+		
+		
+		String fname = request.getParameter("firstname");
+		String lname = request.getParameter("lastname");
+		String gender = request.getParameter("firstname");
+		String email = request.getParameter("email");
+		String pass = request.getParameter("pass");
+		String cnfpass = request.getParameter("cnfpass");
+		String city = request.getParameter("city");
+		String hobbi = request.getParameter("hobby");
+		
+//		boolean right = true;
+//		StringBuffer sb = new StringBuffer("");
+//		
+//		if(fname == null || fname.trim().length()==0)
+//		{
+//			right = false;
+//			sb.append("Name Can't Be Empty");
+//		}
+//		else if(fname.trim().length() < 2)
+//		{
+//			right = false;
+//			sb.append("Accepet 2 or more than 2 character");
+//		}
+//		else
+//		{
+//		    String valid = "[a-zA-Z]+";
+//		    if(fname.matches(valid)!=true)
+//		    {
+//		    	right = false;
+//		    	sb.append("Enter Valid Name");
+//		    }
+//		}
+		
+		
+		boolean iserror = false;
+		StringBuffer error = new StringBuffer("");
+		
+		     if(fname == null || fname.trim().length() == 0)
+		     {
+		    	 iserror = true;
+		    	 error.append("<br>First Name Cant Be Empty");
+		     }
+		     else if(fname.trim().length() <= 2)
+		     {
+		    	iserror = true;
+		    	error.append("<br>Please Enter Greater That 2 Word");
+		     }
+		     else 
+		     {
+		    	 String alpha = "[a-zA-Z]+";
+		    	if(fname.matches(alpha)==false)
+		    	{
+		    		iserror = true;
+		    		error.append("<br>Please Enter Valid First Name");
+		    	}
+		     }
+		
+		RequestDispatcher rd = null;
+		if(iserror)
+		{
+			request.setAttribute("error", error.toString());
+			rd = request.getRequestDispatcher("LoginPage.html");
+			
+		}
+		else {
+			rd = request.getRequestDispatcher("Regi.jsp");
+		}
+		
+		rd.forward(request, responce);
+		
+	}
+}

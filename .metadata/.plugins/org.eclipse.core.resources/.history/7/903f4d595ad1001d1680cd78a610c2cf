@@ -1,0 +1,126 @@
+package com.controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/Registration")
+public class Registration extends HttpServlet {
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse responce) throws ServletException, IOException {
+		
+		
+		String fname = request.getParameter("firstname");
+		String lname = request.getParameter("lastname");
+		String gender = request.getParameter("gender");
+		String email = request.getParameter("email");
+		String pass = request.getParameter("pass");
+		String cnfpass = request.getParameter("cnfpass");
+		String city = request.getParameter("city");
+		String hobbi = request.getParameter("hobbi");
+		
+
+		
+		
+		boolean iserror = false;
+		StringBuffer error = new StringBuffer("");
+		      //fname Validation
+		     if(fname == null || fname.trim().length() == 0)
+		     {
+		    	 iserror = true;
+		    	 error.append("<br>First Name Cant Be Empty");
+		     }
+		     else if(fname.trim().length() <= 2)
+		     {
+		    	iserror = true;
+		    	error.append("<br>Please Enter Greater That 2 Word");
+		     }
+		     else 
+		     {
+		    	 String alpha = "[a-zA-Z]+";
+		    	if(fname.matches(alpha)==false)
+		    	{
+		    		iserror = true;
+		    		error.append("<br>Please Enter Valid First Name");
+		    	}
+		     }
+		     
+		     //Lname Validation
+		     if(lname == null || lname.trim().length()==0)
+		     {
+		    	 iserror=true;
+		    	 error.append("<br>Lname Can't Be Empty");
+		     }
+		     else if(lname.trim().length() <=2)
+		     {
+		    	 iserror=true;
+		    	 error.append("<br>Please Enter Greater That 2 Word");
+		     }
+		     else {
+		    	 String alpha = "[a-zA-Z]+";
+			    	if(fname.matches(alpha)==false)
+			    	{
+			    		iserror = true;
+			    		error.append("<br>Please Enter Valid Last Name");
+			    	}
+			}
+		     
+		     //Gender Validation
+		     if(gender == null)
+		     {
+		    	 iserror=true;
+		    	 error.append("<br>Please Select Gender");
+		     }
+		     
+		     //Email Validation
+		     if(email.trim().length()==0 || email==null)
+		     {
+		    	 iserror=true;
+		    	 error.append("<br>Email Can't Be Empty");
+		     }
+		     else {
+		    		 String alpha = "^(.+)@(\\S+)$";
+		    		 if(email.matches(alpha)==false)
+		    		 {
+		    			 iserror=true;
+		    			 error.append("<br>Enter Valid Email");
+		    		 }
+			}
+		     
+		     //City Validation
+		     if(city == null)
+		     {
+		    	 iserror=true;
+		    	 error.append("<br>Please Select City");
+		     }
+		     
+		     //Hobby Validation
+		     if(hobbi == "select")
+		     {
+		    	 iserror=true;
+		    	 error.append("<br>Please Select Hobbi");
+		     }
+		
+		RequestDispatcher rd = null;
+		if(iserror)
+		{
+			request.setAttribute("error", error.toString());
+			rd = request.getRequestDispatcher("Regi.jsp");
+			
+		}
+		else {
+			
+			
+			rd = request.getRequestDispatcher("LoginPage.html");
+		}
+		
+		rd.forward(request, responce);
+		
+	}
+}

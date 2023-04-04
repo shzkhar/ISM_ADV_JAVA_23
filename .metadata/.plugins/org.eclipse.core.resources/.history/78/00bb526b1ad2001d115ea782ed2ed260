@@ -1,0 +1,62 @@
+package com.dao;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/signup")
+public class Signup extends HttpServlet{
+
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String fname = req.getParameter("firstname");
+		String email = req.getParameter("email");
+		String pass = req.getParameter("password");
+		
+		boolean iserror = false;
+		if(fname==null || fname.trim().length()==0)
+		{
+			iserror = true;
+			req.setAttribute("firstname", "FirstName Can't Be Empty");
+		}
+		else if(fname.trim().length() < 2)
+		{
+			iserror = true;
+			req.setAttribute("firstname", "Please Enter Greter Than 2 Character");
+		}
+		else {
+			String alpha = "[a-zA-Z]";
+			if(fname.matches(alpha)==false)
+			{
+				iserror = true;
+				req.setAttribute("firstname","Please Enter Valid Name");
+			}
+			
+		}
+		
+		if(email==null || email.trim().length()==0)
+		{
+			iserror=true;
+			req.setAttribute("email", "Email Can't Be Empty");
+		}
+		else {
+			String alpha="^(.+)@(\\S+)$";
+			req.setAttribute("email", "Please Enter Valid Emial");
+		}
+		
+		RequestDispatcher rd;
+		if(iserror)
+		{
+		   rd = req.getRequestDispatcher("Registration.jsp");
+		}
+		else {
+			rd = req.getRequestDispatcher("Welcome.Page");
+		}
+	}
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+     <form action="calci" method="post">
+          Enter First Number : <input type="number" name="firstNumber"/>
+          Enter Second Number : <input type="number" name="secondNumber" />
+          
+          <input name="Submit" value="Addition">
+          
+          
+     </form>
+</body>
+</html>

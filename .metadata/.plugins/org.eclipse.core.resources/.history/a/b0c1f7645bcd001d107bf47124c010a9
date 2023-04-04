@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+     <form action="calci" method="post">
+          Enter First Number : <input type="number" name="firstNumber"/><br><br>
+          Enter Second Number : <input type="number" name="secondNumber" /><br><br>
+          
+          
+          <input type="radio" name="addition" value="add">Addition
+          
+          <label for="html">Substraction</label><br>
+          <input type="radio" id="css" name="substraction" value="sub">
+          
+          <label for="html">Multiplication</label><br>
+          <input type="radio" id="css" name="multiplication" value="mul">
+          
+          <label for="html">Division</label><br>
+          <input type="radio" id="css" name="division" value="div">
+          
+          <br><br>
+          <input type="Submit" value="Addition">
+          
+          
+     </form>
+</body>
+</html>
