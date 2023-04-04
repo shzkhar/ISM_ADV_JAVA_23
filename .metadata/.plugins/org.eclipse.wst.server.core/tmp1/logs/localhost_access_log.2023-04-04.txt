@@ -112,3 +112,6 @@
 0:0:0:0:0:0:0:1 - - [04/Apr/2023:19:23:36 +0530] "POST /Adv_Java_Crud/RegistrationController HTTP/1.1" 200 158
 0:0:0:0:0:0:0:1 - - [04/Apr/2023:19:23:45 +0530] "POST /Adv_Java_Crud/RegistrationController HTTP/1.1" 200 692
 0:0:0:0:0:0:0:1 - - [04/Apr/2023:20:04:32 +0530] "POST /Adv_Java_Crud/RegistrationController HTTP/1.1" 200 158
+127.0.0.1 - - [04/Apr/2023:20:05:51 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [04/Apr/2023:20:05:53 +0530] "GET /Adv_Java_Crud/Registration.jsp HTTP/1.1" 200 706
+0:0:0:0:0:0:0:1 - - [04/Apr/2023:20:06:52 +0530] "GET /Adv_Java_Crud/Registration.jsp HTTP/1.1" 200 649
