@@ -152,7 +152,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\ISM-Batch\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\ISM-Batch\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ServletDemo" path="/ServletDemo" reloadable="true" source="org.eclipse.jst.jee.server:ServletDemo"/><Context docBase="C:\ISM-Batch\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\FirstWEBProject" path="/FirstWEBProject" reloadable="true" source="org.eclipse.jst.jee.server:FirstWEBProject"/></Host>
+      <Context docBase="C:\ISM-Batch\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\ISM-Batch\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ServletDemo" path="/ServletDemo" reloadable="true" source="org.eclipse.jst.jee.server:ServletDemo"/><Context docBase="C:\ISM-Batch\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\FirstWEBProject" path="/FirstWEBProject" reloadable="true" source="org.eclipse.jst.jee.server:FirstWEBProject"/><Context docBase="C:\ISM-Batch\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\Adv_Java_Crud" path="/Adv_Java_Crud" reloadable="true" source="org.eclipse.jst.jee.server:Adv_Java_Crud"/></Host>
     </Engine>
   </Service>
 </Server>

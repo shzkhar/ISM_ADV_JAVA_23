@@ -1,0 +1,27 @@
+package com.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.bean.UserBean;
+import com.util.DbConnection;
+
+public class UserDao {
+
+	public void addUser(UserBean userBean)
+	{
+		Connection con = DbConnection.getConnection();
+		
+		try {
+			PreparedStatement ps = con.prepareStatement("Insert into signup(name,email,pass)values(?,?,?)");
+			
+			ps.setString(1,userBean.getFirstname());
+			ps.setString(2, userBean.getEmail());
+			ps.setString(3, userBean.getPassword());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
