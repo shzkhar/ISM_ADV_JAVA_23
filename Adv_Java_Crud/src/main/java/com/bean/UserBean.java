@@ -6,6 +6,7 @@ public class UserBean {
 	private String firstname;
 	private String email;
 	private String password;
+	
 	public Integer getId() {
 		return id;
 	}

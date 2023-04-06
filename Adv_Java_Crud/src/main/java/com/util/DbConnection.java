@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
 public class DbConnection {
 
 	public static Connection getConnection()
@@ -32,7 +33,15 @@ public class DbConnection {
 //			System.err.println("Failed");
 //		}
 //		else {
-//			System.out.println("Passed");
+//			System.out.println("Pass.");
+//		}
+//			try {
+//				Statement s = con.createStatement();
+//				s.execute("insert into signup (name,email,pass)values('Ram','ram123@gmail.com','Ram123')");
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 //		}
 //	}
 }

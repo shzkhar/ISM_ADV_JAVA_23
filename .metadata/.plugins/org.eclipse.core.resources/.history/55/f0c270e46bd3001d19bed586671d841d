@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@page import="com.bean.UserBean" import="java.util.ArrayList"; %>
+  
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+    <%
+        ArrayList<UserBean> users = (ArrayList<UserBean>) request.getAttribute("users");
+    %>
+    
+    <table border ="1">
+         <tr>
+             <th>User Id</th>
+             <th>Name</th>
+             <th>Email</th>
+             <th>Pass</th>
+             <th>Action</th>
+         </tr>
+        
+         <%for(UserBean user : users){ %>
+        
+         <tr>
+            <td>user.getId()</td>
+            <td>user.getFirstname()</td>
+            <td>user.getEmail()</td>
+            <td>user.getPassword()</td>
+            <td><a href="DeleteUserController?Id=<%=user.getId()%>>Delete</a></td>
+         </tr>
+         <%} %>
+    </table>
+</body>
+</html>

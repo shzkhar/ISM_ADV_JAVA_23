@@ -12,7 +12,7 @@
 </style>
 </head>
 <body>
-
+ 
 <% 
     String firstname =(String) request.getAttribute("firstname");
     String email =(String) request.getAttribute("email");
@@ -22,8 +22,10 @@
     <form action="RegistrationController" method="post">
        First Name :-<input type="text" name="firstname" value="${firstnamevalue}"/>
        <span class="color"><%=firstname==null?"":firstname %></span><br><br>
+       
        Email :- <input type="text" name="email" value="${emailvalue}"/>
       <span class="color"><%=email==null?"":email %></span><br><br>
+      
        Password :- <input type="password" name="password" value="${passwordvalue}"/>
        <span class="color"><%=password==null?"":password %></span><br><br>
        

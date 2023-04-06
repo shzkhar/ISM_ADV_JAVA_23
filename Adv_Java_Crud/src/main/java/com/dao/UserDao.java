@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.bean.UserBean;
 import com.util.DbConnection;
@@ -12,10 +13,12 @@ public class UserDao {
 
 	public void addUser(UserBean userBean)
 	{
-		Connection con = DbConnection.getConnection();
 		
+	
 		try {
-			PreparedStatement ps = con.prepareStatement("Insert into signup(name,email,pass)values(?,?,?)");
+			Connection con = DbConnection.getConnection();
+			
+			PreparedStatement ps = con.prepareStatement("Insert into signup(name,email,pass) values(?,?,?) ");
 			
 			ps.setString(1,userBean.getFirstname());
 			ps.setString(2, userBean.getEmail());
@@ -26,6 +29,7 @@ public class UserDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 	
@@ -45,16 +49,133 @@ public class UserDao {
 			if(rs.next())
 			{
 			 userBean =new UserBean();
-			 userBean.setFirstname(rs.getString("firstname"));
+			 userBean.setFirstname(rs.getString("name"));
 			 userBean.setId(rs.getInt("id"));
 			 userBean.setEmail(rs.getString("email"));
-			 userBean.setPassword(rs.getString("password"));
+			 userBean.setPassword(rs.getString("pass"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return userBean;
+		
+	}
+	
+	public ArrayList<UserBean> getAllUsers()
+	{
+		ArrayList<UserBean> users = new ArrayList<UserBean>();
+		
+		try {
+		Connection con = DbConnection.getConnection();
+		
+		PreparedStatement ps = con.prepareStatement("select * from signup");
+		ResultSet rs = ps.executeQuery();
+		
+		while(rs.next())
+		{
+			UserBean user = new UserBean();
+			user.setFirstname(rs.getString("name"));
+			user.setId(rs.getInt("id"));
+			user.setEmail(rs.getString("email"));
+		    user.setPassword(rs.getString("pass"));
+		    
+		    users.add(user);
+		}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return users;
+	}
+	
+	public void deleteUser(Integer userId)
+	{
+		try {
+			Connection con = DbConnection.getConnection();
+			
+			PreparedStatement ps = con.prepareStatement("delete from signup where id=?");
+			
+			ps.setInt(1, userId);
+			int rowaffected = ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public ArrayList<UserBean> search(String name) {
+     
+		ArrayList<UserBean> users = new ArrayList<UserBean>();
+		
+		try {
+		Connection con = DbConnection.getConnection();
+		
+		PreparedStatement ps = con.prepareStatement("select * from signup where name like ?");
+		ps.setString(1,name+"%");
+		
+		ResultSet rs = ps.executeQuery();
+		
+		while(rs.next())
+		{
+			UserBean user = new UserBean();
+			user.setFirstname(rs.getString("name"));
+			user.setId(rs.getInt("id"));
+			user.setEmail(rs.getString("email"));
+		    user.setPassword(rs.getString("pass"));
+		    
+		    users.add(user);
+		}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return users;
+	}
+
+	public UserBean getUserById(Integer id) {
+		
+       UserBean user = null;
+		
+		try {
+		Connection con = DbConnection.getConnection();
+		
+		PreparedStatement ps = con.prepareStatement("select * from signup where id=?");
+		ps.setInt(1,id);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		if(rs.next())
+		{
+			 user = new UserBean();
+			user.setFirstname(rs.getString("name"));
+			user.setId(rs.getInt("id"));
+			user.setEmail(rs.getString("email"));
+		    user.setPassword(rs.getString("pass"));
+		}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return user;
+	}
+
+	public void updateUser(UserBean userBean) {
+		try {
+			Connection con = DbConnection.getConnection();
+			PreparedStatement ps = con.prepareStatement("update signup set name=?,email=? where id=?");
+			
+			ps.setString(1, userBean.getFirstname());
+			ps.setString(2, userBean.getEmail());
+			ps.setInt(3,userBean.getId() );
+			
+			ps.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 }
